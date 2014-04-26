@@ -9,6 +9,7 @@ public class Container extends Element {
         contain = new ArrayList<Element>();
     }
 
+    // Add child to list.
     public Element addChild(Element element) {
         contain.add(element);
         element.childOf = this;
