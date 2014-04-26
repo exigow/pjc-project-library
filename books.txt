@@ -1,6 +1,6 @@
-Mechanika kwantowa: Wstęp;Jan Kowalski;
-Układy analogowe;Jan Kowalski;
-Zastosowanie diody LED;Jan Kowalski;
-Wprowadzenie do elektroniki;Jan Kowalski;
-Mentalizm;Jan Kowalski;
-Techniki studiowania;Jan Kowalski;
+13;Mechanika kwantowa: Wstęp;Jan Kowalski;
+3;Układy analogowe;Jan Kowalski;
+121;Zastosowanie diody LED;Jan Kowalski;
+16;Wprowadzenie do elektroniki;Jan Kowalski;
+73;Mentalizm;Jan Kowalski;
+8;Techniki studiowania;Jan Kowalski;

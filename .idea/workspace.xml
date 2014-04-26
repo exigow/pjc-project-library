@@ -9,10 +9,11 @@
     <file path="/Library.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398534932698" ignored="false" />
     <file path="/Container.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398532992490" ignored="false" />
     <file path="/Book.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398534767002" ignored="false" />
-    <file path="/BookBase.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398535277985" ignored="false" />
+    <file path="/BookBase.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398539589563" ignored="false" />
     <file path="/BookDefinition.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398535120853" ignored="false" />
-    <file path="/Main.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398537839523" ignored="false" />
-    <file path="/BookDef.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398535819058" ignored="false" />
+    <file path="/Main.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398539323770" ignored="false" />
+    <file path="/BookDef.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398539502471" ignored="false" />
+    <file path="/BookDefBase.java" changelist="07225627-b931-4c46-b588-36b0aa328837" time="1398539590892" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,57 +76,19 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="42" selection-start="215" selection-end="215" vertical-scroll-proportion="-0.23943663">
+            <state line="7" column="1" selection-start="227" selection-end="227" vertical-scroll-proportion="0.21212122">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BookDatabase.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BookDatabase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="44" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Library.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Library.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="24" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookDefBase.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BookDefBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookDef.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BookDef.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Container.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Container.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="31" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Element.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Element.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -146,8 +109,10 @@
         <option value="$PROJECT_DIR$/src/BookDefinition.java" />
         <option value="$PROJECT_DIR$/src/BookBase.java" />
         <option value="$PROJECT_DIR$/src/Library.java" />
-        <option value="$PROJECT_DIR$/src/BookDef.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/BookDefBase.java" />
+        <option value="$PROJECT_DIR$/src/BookDef.java" />
+        <option value="$PROJECT_DIR$/src/BookDatabase.java" />
       </list>
     </option>
   </component>
@@ -300,7 +265,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6712095" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -410,21 +375,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Library.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="24" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0">
+        <state line="13" column="44" selection-start="713" selection-end="713" vertical-scroll-proportion="0.6005435">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BookDef.java">
+    <entry file="file://$PROJECT_DIR$/src/BookDefinition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0">
+        <state line="11" column="0" selection-start="260" selection-end="260" vertical-scroll-proportion="0.5081522">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BookDefBase.java">
+    <entry file="file://$PROJECT_DIR$/src/BookDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0">
+        <state line="25" column="44" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -433,10 +398,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="42" selection-start="215" selection-end="215" vertical-scroll-proportion="-0.23943663">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="7" column="1" selection-start="227" selection-end="227" vertical-scroll-proportion="0.21212122">
+          <folding />
         </state>
       </provider>
     </entry>
