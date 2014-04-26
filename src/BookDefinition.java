@@ -12,6 +12,6 @@ public class BookDefinition implements Serializable {
 
     @Override
     public String toString() {
-        return "[" + id + "] " + title + " (author: " + author + ")";
+        return "<[" + id + "] " + title + " (author: " + author + ")>";
     }
 }

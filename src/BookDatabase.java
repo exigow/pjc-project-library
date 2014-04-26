@@ -8,7 +8,7 @@ public class BookDatabase {
     public BookDatabase(String filename) {
         definitions = new ArrayList<BookDefinition>();
 
-        File file = new File("books.txt");
+        File file = new File(filename);
         BufferedReader reader = null;
 
         try {
@@ -57,9 +57,22 @@ public class BookDatabase {
     }
 
     public void showAllDefinitions() {
-        System.out.println("Definitions: ");
+        System.out.println("Showing definitions: ");
         for (BookDefinition def: definitions) {
-            System.out.println(def);
+            System.out.println("*** " + def);
         }
+    }
+
+    public BookDefinition getBookDefinition() {
+        return definitions.get(0);
+    }
+
+    public BookDefinition getBookDefinitionById(int id) {
+        for (BookDefinition def: definitions) {
+            if (def.id == id) {
+                return def;
+            }
+        }
+        return null;
     }
 }
