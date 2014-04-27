@@ -7,6 +7,7 @@ public class Reader extends Speaker {
     public Reader(String name) {
         this.giveName(name);
         this.actionStack = new ArrayList<Action>();
+        say("created!");
     }
 
     public void addAction(Action action) {
@@ -48,5 +49,19 @@ public class Reader extends Speaker {
                 //
             }
         }
+    }
+
+    public static ArrayList<Reader> createReadersFromFile(String filesrc) {
+        ArrayList<Reader> readers = new ArrayList<Reader>();
+
+        FileData.startReading(filesrc);
+        ArrayList<String> str;
+        while ((str = FileData.readLine()) != null) {
+            Reader reader = new Reader(str.get(0));
+        }
+        FileData.endReading();
+
+        // Return list of libraries.
+        return readers;
     }
 }

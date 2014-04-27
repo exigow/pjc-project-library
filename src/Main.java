@@ -10,6 +10,9 @@ public class Main {
 
         // Create libraries with books.
         ArrayList<Library> libs = Library.createLibsFromFile("data/libs.txt", base);
+
+        // Create readers from file.
+        ArrayList<Reader> readers = Reader.createReadersFromFile("data/readersqueue.txt");
     }
 }
 
