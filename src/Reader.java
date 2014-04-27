@@ -1,34 +1,52 @@
 import java.util.ArrayList;
 
 public class Reader extends Speaker {
+    private Thread ptr;
+    private ArrayList<Action> actionStack;
+
     public Reader(String name) {
-        this.name = name;
+        this.giveName(name);
+        this.actionStack = new ArrayList<Action>();
     }
 
-    public void findBookById(int bookid, ArrayList<Library> list) {
-        /*Thread thread = new Thread(new Runnable() {
-            public void run() {
-            }
-        });
-        thread.start();*/
+    public void addAction(Action action) {
+        actionStack.add(action);
+    }
 
-        for (Library lib: list) {
-            //System.out.println(this.name + " is requesting book from " + lib.libname + "...");
-            say("Im requesting book from " + lib.name + "...");
+    public void showActionStack() {
+        sayBegin("this is my action stack:");
+        int i = 0;
+        for (Action a: actionStack) {
+            System.out.println("    " + i +  ": " + a.pickName());
+            i++;
+        }
+        sayEnd();
+    }
+
+    @Override
+    public void run() {
+        say("I'm starting perform my actions...");
+        for (Action a: actionStack) {
+            say("executing action " + a.pickName());
+            a.run();
             try {
-                Thread.sleep(250);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
-                System.err.println("Can't wait.");
-            }
-
-            BookInstance i = lib.findBookById(bookid);
-            if (i != null) {
-                break;
+                //
             }
         }
     }
 
-    public void run() {
 
+    public void read() {
+        say("Reading...");
+        for (int i = 0; i < 4; i++) {
+            say("I'm reading hard (step: " + i + ")");
+            try {
+                Thread.sleep((long)(128 + Math.random() * 128));
+            } catch (InterruptedException e) {
+                //
+            }
+        }
     }
 }

@@ -2,10 +2,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDatabase {
+public class BookDatabase extends Speaker {
     List<BookDefinition> definitions;
 
     public BookDatabase(String filename) {
+        name = "Database"; // Speaker name.
         definitions = new ArrayList<BookDefinition>();
 
         File file = new File(filename);
@@ -57,10 +58,11 @@ public class BookDatabase {
     }
 
     public void showAllDefinitions() {
-        System.out.println("Showing definitions: ");
+        sayBegin("showing definitions:");
         for (BookDefinition def: definitions) {
-            System.out.println("*** " + def);
+            System.out.println("    " + def);
         }
+        sayEnd();
     }
 
     public BookDefinition getBookDefinition() {
