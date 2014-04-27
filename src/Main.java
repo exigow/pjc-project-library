@@ -7,7 +7,7 @@ public class Main {
         // Load database.
         BookDatabase base = new BookDatabase("bookdefs.txt");
         base.showAllDefinitions();
-
+/*
         final Reader a = new Reader("Tom");
         a.addAction(new Action("say hello") {
             public void action() {
@@ -21,7 +21,7 @@ public class Main {
         });
         a.showActionStack();
         a.start();
-
+*/
 
     }
 }
