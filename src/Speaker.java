@@ -8,6 +8,10 @@ public abstract class Speaker extends Thread {
     protected void sayBegin(String what) {
         say(what + "\n{");
     }
+    protected void sayMid(String what) {
+        System.out.print("    ");
+        say(what);
+    }
     protected void sayEnd() {
         System.out.println("}");
     }

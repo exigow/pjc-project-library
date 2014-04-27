@@ -25,7 +25,7 @@ public class BookDatabase extends Speaker {
     public void showAllDefinitions() {
         sayBegin("showing definitions:");
         for (BookDefinition def: definitions) {
-            System.out.println("    " + def);
+            sayMid("" + def.toString());
         }
         sayEnd();
     }

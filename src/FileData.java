@@ -8,7 +8,7 @@ public class FileData {
 
     public static void startReading(String filename) {
         name = filename;
-        System.out.println("[FILEIO] Start reading from file " + name + "...");
+        msg("Reading start.");
         File file = new File(name);
         reader = null;
 
@@ -51,7 +51,11 @@ public class FileData {
         } catch (IOException e) {
             System.err.println("File close exception!");
         }
-        System.out.println("[FILEIO] End of reading (" + name + ").");
-        name = "<empty>";
+        msg("Reading end.");
+        name = "<empty_name>";
+    }
+
+    public static void msg(String what) {
+        System.out.println("[File-IO] (" + name + "): " + what);
     }
 }
