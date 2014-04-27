@@ -5,11 +5,11 @@ public class Main {
         System.out.println("Test start.");
 
         // Load database.
-        BookDatabase base = new BookDatabase("bookdefs.txt");
+        BookDatabase base = new BookDatabase("data/bookdefs.txt");
         base.showAllDefinitions();
 
         // Create libraries with books.
-        ArrayList<Library> libs = Library.createLibsFromFile("libs.txt", base);
+        ArrayList<Library> libs = Library.createLibsFromFile("data/libs.txt", base);
     }
 }
 
