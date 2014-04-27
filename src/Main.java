@@ -7,6 +7,21 @@ public class Main {
         // Load database.
         BookDatabase base = new BookDatabase("bookdefs.txt");
         base.showAllDefinitions();
+
+        // Create libraries with books.
+        ArrayList<Library> libs = Library.createLibsFromFile("libs.txt", base);
+    }
+}
+
+
+
+
+
+
+
+
+
+
 /*
         final Reader a = new Reader("Tom");
         a.addAction(new Action("say hello") {
@@ -22,6 +37,3 @@ public class Main {
         a.showActionStack();
         a.start();
 */
-
-    }
-}
