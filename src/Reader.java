@@ -1,4 +1,7 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class Reader extends Speaker {
     private ArrayList<Action> actionStack;
@@ -6,6 +9,15 @@ public class Reader extends Speaker {
     private BookDatabase data;
     private BookInstance myBook;
     private int atPage;
+    private Library myBookFrom;
+
+    ActionListener taskPerformer = new ActionListener() {
+        int iter = 0;
+        public void actionPerformed(ActionEvent evt) {
+            System.out.println("Tick " + iter);
+            iter++;
+        }
+    };
 
     // Constructor. Give name.
     public Reader(String name) {
@@ -129,6 +141,7 @@ public class Reader extends Speaker {
             _book = askLibForBook(lib, bookid);
             if (_book != null) {
                 say("Book founded! Lib: " + lib.pickName());
+                myBookFrom = lib;
                 lib.getBook(this, _book);
                 break;
             } else {
@@ -147,7 +160,7 @@ public class Reader extends Speaker {
         }
 
         if (safetyPass) {
-            say("Safety end. No book.");
+            say("Safety end. No book. Exterminate thread.");
         }
     }
 
@@ -171,11 +184,12 @@ public class Reader extends Speaker {
 
     public void returnBook() {
         say("Returning book " + myBook.isInstanceOf().getTitle() + "...");
-
+        myBookFrom.setBookActive(myBook, true);
         say("Return done.");
     }
 
     public BookInstance askLibForBook(Library lib, int bookid) {
+        say("Asking " + lib.pickName() + " for book...");
         for (BookInstance i: lib.books) {
             if (i.isInstanceOf().id == bookid) {
                 if (i.isAvailable()) {

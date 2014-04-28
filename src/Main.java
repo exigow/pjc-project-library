@@ -4,6 +4,13 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Test start.");
 
+        Time time = new Time();
+        Time.setSingletonTime(time);
+        time.start();
+
+        //System.out.println(Time.getTime());
+
+
         // Load database.
         BookDatabase base = new BookDatabase("data/bookdefs.txt");
         base.showAllDefinitions();

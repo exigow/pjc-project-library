@@ -1,3 +1,3 @@
 Biblioteka Czerwona;3;13;8;8;8;73;
-Biblioteka Zielona;16;73;73;
+Biblioteka Zielona;73;73;
 Biblioteka Niebieska;121;3;3;
