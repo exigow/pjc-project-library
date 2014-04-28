@@ -37,13 +37,6 @@ public class Reader extends Speaker {
         for (Action a: actionStack) {
             say("executing action " + a.pickName());
             a.run();
-
-            // Sleep. For fun.
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                //
-            }
         }
     }
 
@@ -99,13 +92,50 @@ public class Reader extends Speaker {
     // Predefined action.
     public void actionFindBook(final int bookid) {
         // First wait.
-        try {
-            Thread.sleep((long)(250.0 + Math.random() * 750.0));
-        } catch (InterruptedException e) {
-            System.out.println("Thread interrupted. Sorry.");
+        sleepRandTime(1000);
+        // Then do.
+        say("Im going to find book " + data.getBookDefinitionById(bookid) + "...");
+
+        int libToCheck = 0;
+        boolean libFounded = false;
+        int safety = 0;
+        int safetyMax = 8;
+        boolean safetyPass = false;
+        while (safety < safetyMax) {
+            safety++;
+            say("Checking lib (" + safety + ")" + libList.get(libToCheck).pickName());
+
+            // Code!
+            sleepRandTime(100);
+
+            libFounded = askLibForBook(libList.get(libToCheck), bookid);
+            if (libFounded) {
+                say("Book founded!");
+                break;
+            }
+
+            libToCheck++;
+            if (libToCheck >= libList.size()) {
+                libToCheck = 0;
+                say("I've checked all libs. Starting from beginning.");
+            }
+
+            if (safety >= safetyMax) {
+                safetyPass = true;
+            }
         }
 
-        // Then do.
-        say("Im going to find book " + data.getBookDefinitionById(bookid));
+        if (safetyPass) {
+            say("Safety end. No book.");
+        }
+    }
+
+    public boolean askLibForBook(Library lib, int bookid) {
+        for (BookInstance i: lib.books) {
+            if (i.isInstanceOf().id == bookid) {
+                return true;
+            }
+        }
+        return false;
     }
 }

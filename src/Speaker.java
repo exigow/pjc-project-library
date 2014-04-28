@@ -19,4 +19,16 @@ public abstract class Speaker extends Thread {
     public void giveName(String name) {
         this.name = name;
     }
+
+    public String pickName() {
+        return "<" + name + ">";
+    }
+
+    public void sleepRandTime(float time) {
+        try {
+            Thread.sleep((long)((time / 2) + Math.random() * (time / 2)));
+        } catch (InterruptedException e) {
+            System.out.println("Thread interrupted. Sorry.");
+        }
+    }
 }
