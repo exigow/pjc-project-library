@@ -10,6 +10,7 @@ public class Reader extends Speaker {
     private BookInstance myBook;
     private int atPage;
     private Library myBookFrom;
+    private int haveTimeMax, haveTimeStart;
 
     ActionListener taskPerformer = new ActionListener() {
         int iter = 0;
@@ -47,11 +48,12 @@ public class Reader extends Speaker {
     // Run this thread. Execute actions.
     @Override
     public void run() {
-        say("I'm starting perform my actions...");
+        say("I'm starting perform my actions (thread start)...");
         for (Action a: actionStack) {
-            say("executing action " + a.pickName());
+            say("Executing action " + a.pickName());
             a.run();
         }
+        say("I've done all my jobs from action stack (thread end).");
     }
 
     // Create readers from file (give name, build action stack, etc.).
@@ -84,7 +86,7 @@ public class Reader extends Speaker {
                 reader.addAction(new Action("returnwhatyouhave") {
                     @Override
                     public void action() {
-                        getOwner().returnBook();
+                        getOwner().actionReturnBook();
                     }
                 });
             }
@@ -142,7 +144,7 @@ public class Reader extends Speaker {
             if (_book != null) {
                 say("Book founded! Lib: " + lib.pickName());
                 myBookFrom = lib;
-                lib.getBook(this, _book);
+                lib.giveBook(this, _book);
                 break;
             } else {
                 say("Failed.");
@@ -164,28 +166,47 @@ public class Reader extends Speaker {
         }
     }
 
-    public void giveBook(BookInstance book) {
+    public void giveBook(BookInstance book, int timeMax) {
         myBook = book;
+        haveTimeMax = timeMax;
+        haveTimeStart = (int)Time.getTime();
         say("Got book " + book.isInstanceOf().getTitle());
     }
 
     public void actionReadBook() {
-        atPage = 0;
-        say("Reading book " + myBook.isInstanceOf().getTitle() + "...");
+        if (myBook != null) {
+            atPage = 0;
+            say("Reading book " + myBook.isInstanceOf().getTitle() + "...");
 
-        while (atPage < myBook.isInstanceOf().getLength()) {
-            say("Reading at page " + atPage);
-            sleepRandTime(100);
-            atPage += 10;
+            while (atPage < myBook.isInstanceOf().getLength()) {
+                say("Reading at page " + atPage);
+                sleepRandTime(100);
+                atPage += 10;
+
+                // Check how much time do i have.
+                int diff = (int)Time.getTime() - haveTimeMax;
+                if (diff > 0) {
+                    say("#WORRIED# I have to return my book! Time expired by " + diff + " time units.");
+                }
+            }
+
+            say("Finish! (reading)");
+        } else {
+            say("#ANGRY# I dont have any book! I cant read!");
         }
-
-        say("Finish! (reading)");
     }
 
-    public void returnBook() {
-        say("Returning book " + myBook.isInstanceOf().getTitle() + "...");
-        myBookFrom.setBookActive(myBook, true);
-        say("Return done.");
+    public void actionReturnBook() {
+        if (myBook != null) {
+            say("Returning book " + myBook.isInstanceOf().getTitle() + "...");
+            myBookFrom.setBookActive(myBook, true);
+            say("Return done.");
+
+            myBookFrom = null;
+            myBook = null;
+        } else {
+            say("#ANGRY# I cant return any book! I dont have one!");
+        }
     }
 
     public BookInstance askLibForBook(Library lib, int bookid) {

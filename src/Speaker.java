@@ -3,6 +3,7 @@ public abstract class Speaker extends Thread {
 
     protected void say(String what) {
         System.out.println(Time.getTimeStr() + " " + this.name + " -> " + what);
+        Time.invokeLife();
     }
 
     protected void sayBegin(String what) {

@@ -4,12 +4,14 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Test start.");
 
-        Time time = new Time();
+        Time time = new Time() {
+            @Override
+            public void summary() {
+                System.err.println("### TIME EXPIRED ###");
+            }
+        };
         Time.setSingletonTime(time);
         time.start();
-
-        //System.out.println(Time.getTime());
-
 
         // Load database.
         BookDatabase base = new BookDatabase("data/bookdefs.txt");
@@ -29,6 +31,8 @@ public class Main {
 
         // Run them!
         Reader.startAllReaders(readers);
+
+        //time.stopCounting();
     }
 }
 

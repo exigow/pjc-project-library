@@ -43,10 +43,17 @@ public class Library extends Speaker {
         return libs;
     }
 
-    synchronized public void getBook(Reader reader, BookInstance instance) {
-        say("Giving book " + instance.isInstanceOf().getTitle() + " to " + reader.pickName());
-        reader.giveBook(instance);
+    // Give book to reader. Set maximum time, false active.
+    synchronized public void giveBook(Reader reader, BookInstance instance) {
+        int timeMax = 50; // Each reader have 50 time units per book.
+        say("Giving book " + instance.isInstanceOf().getTitle() + " to " + reader.pickName() + " You have " + timeMax + " time units.");
+        reader.giveBook(instance, (int)Time.getTime() + timeMax);
         setBookActive(instance, false);
+    }
+
+    // Return book to lib from reader. Punish him if he expired time.
+    synchronized public void giveBackBook(Reader reader, BookInstance instance) {
+        
     }
 
     synchronized public void setBookActive(BookInstance book, boolean val){
