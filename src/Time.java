@@ -14,7 +14,6 @@ public class Time extends Thread {
         lastLiveTime = 0;
     }
 
-
     public void run() {
         //System.err.println("### TIME START ###");
 
