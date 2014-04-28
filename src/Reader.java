@@ -10,7 +10,7 @@ public class Reader extends Speaker {
     private BookInstance myBook;
     private int atPage;
     private Library myBookFrom;
-    private int haveTimeMax, haveTimeStart;
+    public int haveTimeMax, haveTimeStart;
 
     ActionListener taskPerformer = new ActionListener() {
         int iter = 0;
@@ -184,7 +184,7 @@ public class Reader extends Speaker {
                 atPage += 10;
 
                 // Check how much time do i have.
-                int diff = (int)Time.getTime() - haveTimeMax;
+                int diff = this.timeDiff();
                 if (diff > 0) {
                     say("#WORRIED# I have to return my book! Time expired by " + diff + " time units.");
                 }
@@ -196,10 +196,15 @@ public class Reader extends Speaker {
         }
     }
 
+    public int timeDiff() {
+        return (int)Time.getTime() - haveTimeMax;
+    }
+
     public void actionReturnBook() {
         if (myBook != null) {
+
             say("Returning book " + myBook.isInstanceOf().getTitle() + "...");
-            myBookFrom.setBookActive(myBook, true);
+            myBookFrom.giveBackBook(this, myBook);
             say("Return done.");
 
             myBookFrom = null;

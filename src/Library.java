@@ -2,11 +2,13 @@ import java.util.ArrayList;
 
 public class Library extends Speaker {
     ArrayList<BookInstance> books;
+    public int coins;
 
     public Library(String name) {
         giveName(name);
         books = new ArrayList<BookInstance>();
         say("Created!");
+        coins = 0;
     }
 
     // Add instance of book (from definition).
@@ -53,7 +55,18 @@ public class Library extends Speaker {
 
     // Return book to lib from reader. Punish him if he expired time.
     synchronized public void giveBackBook(Reader reader, BookInstance instance) {
-        
+        say("I've got book " + instance.isInstanceOf().getTitle() + " from " + reader.pickName());
+        setBookActive(instance, true);
+
+        int diff = reader.timeDiff();
+
+        if (diff > 0) {
+            say("#ANGRY# Time expired! (" + diff + " time units)");
+            say("You have to pay " + diff +  " units (1 unit = 1 coin)!");
+            coins += diff;
+        }
+
+        say("#HAPPY# Thank you " + reader.pickName() + ". Now i have " + coins + " coins.");
     }
 
     synchronized public void setBookActive(BookInstance book, boolean val){
