@@ -45,18 +45,36 @@ public class Library extends Speaker {
         return libs;
     }
 
+    synchronized public BookInstance askLibForBook(Reader whoisasking, int bookid) {
+        say(whoisasking.pickName() + " is asking for book (id: " + bookid + ")...");
+        for (BookInstance i: books) {
+            if (i.isInstanceOf().id == bookid) {
+                if (i.isAvailable()) {
+                    say("#HAPPY# I have this book!");
+                    return i;
+                } else {
+                    say("#SAD# Book is NOT AVALIBLE. (temp. owner: " + i.owner.pickName() + ")");
+                    say("Owner of this book is " + i.owner.pickName() + ". Return date is " + i.owner.haveTimeMax + ". Come back later.");
+                }
+            }
+        }
+        return null;
+    }
+
     // Give book to reader. Set maximum time, false active.
     synchronized public void giveBook(Reader reader, BookInstance instance) {
         int timeMax = 50; // Each reader have 50 time units per book.
         say("Giving book " + instance.isInstanceOf().getTitle() + " to " + reader.pickName() + " You have " + timeMax + " time units.");
         reader.giveBook(instance, (int)Time.getTime() + timeMax);
         setBookActive(instance, false);
+        instance.owner = reader;
     }
 
     // Return book to lib from reader. Punish him if he expired time.
     synchronized public void giveBackBook(Reader reader, BookInstance instance) {
         say("I've got book " + instance.isInstanceOf().getTitle() + " from " + reader.pickName());
         setBookActive(instance, true);
+        instance.owner = null;
 
         int diff = reader.timeDiff();
 

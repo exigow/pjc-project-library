@@ -140,7 +140,7 @@ public class Reader extends Speaker {
             // Code!
             sleepRandTime(100);
 
-            _book = askLibForBook(lib, bookid);
+            _book = lib.askLibForBook(this, bookid);
             if (_book != null) {
                 say("Book founded! Lib: " + lib.pickName());
                 myBookFrom = lib;
@@ -162,7 +162,7 @@ public class Reader extends Speaker {
         }
 
         if (safetyPass) {
-            say("Safety end. No book. Exterminate thread.");
+            say("#ANGRY/SAD# I cant find it! I've asked everywhere. Many times.");
         }
     }
 
@@ -214,7 +214,7 @@ public class Reader extends Speaker {
         }
     }
 
-    public BookInstance askLibForBook(Library lib, int bookid) {
+    /*public BookInstance askLibForBook(Library lib, int bookid) {
         say("Asking " + lib.pickName() + " for book...");
         for (BookInstance i: lib.books) {
             if (i.isInstanceOf().id == bookid) {
@@ -226,5 +226,5 @@ public class Reader extends Speaker {
             }
         }
         return null;
-    }
+    }*/
 }

@@ -2,6 +2,7 @@
 public class BookInstance {
     private boolean state; // Dostepna?
     private BookDefinition definition;
+    public Reader owner;
 
     public BookInstance(BookDefinition definition) {
         state = true;
