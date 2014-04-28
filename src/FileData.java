@@ -6,6 +6,17 @@ public class FileData {
     private static String name;
     private static String line;
 
+    /*
+    Example:
+        FileData.startReading(filename);
+        ArrayList<String> str;
+        while ((str = FileData.readLine()) != null) {
+            System.out.println(str);
+        }
+        FileData.endReading();
+    */
+
+    // You have to start before reading.
     public static void startReading(String filename) {
         name = filename;
         msg("Reading start.");
@@ -19,6 +30,7 @@ public class FileData {
         }
     }
 
+    // Read line. Returns array of strings separated by ";".
     public static ArrayList<String> readLine() {
         ArrayList<String> list = new ArrayList<String>();
 
@@ -31,20 +43,27 @@ public class FileData {
         String subword;
         if (line != null) {
             subword = "";
+
+            // Convert to char-array.
             char arr[] = line.toCharArray();
+
             for (char c: arr) {
+                // Check until ";".
                 if (c == ';') {
+                    // Add subword to list and clear.
                     list.add(subword);
                     subword = "";
                 } else {
+                    // Extend subword by this char.
                     subword += c;
                 }
             }
             return list;
         }
-        return null;
+        return null; // If failed (empty string for example).
     }
 
+    // Finish reading.
     public static void endReading() {
         try {
             reader.close();
@@ -55,6 +74,7 @@ public class FileData {
         name = "<empty_name>";
     }
 
+    // Debug msg.
     public static void msg(String what) {
         System.out.println("[File-IO] (" + name + "): " + what);
     }

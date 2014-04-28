@@ -5,6 +5,7 @@ import java.util.List;
 public class BookDatabase extends Speaker {
     List<BookDefinition> definitions;
 
+    // Constructor. Create book database from file.
     public BookDatabase(String filename) {
         this.giveName("Database");
         definitions = new ArrayList<BookDefinition>();
@@ -17,11 +18,13 @@ public class BookDatabase extends Speaker {
         FileData.endReading();
     }
 
+    // Add definition to list of books.
     public BookDefinition addDefinition(BookDefinition def) {
         definitions.add(def);
         return def;
     }
 
+    // Show all defs.
     public void showAllDefinitions() {
         sayBegin("Showing definitions:");
         for (BookDefinition def: definitions) {
@@ -30,10 +33,12 @@ public class BookDatabase extends Speaker {
         sayEnd();
     }
 
+    // TODO wtf...?
     public BookDefinition getBookDefinition() {
         return definitions.get(0);
     }
 
+    // Return book def by id of book.
     public BookDefinition getBookDefinitionById(int id) {
         for (BookDefinition def: definitions) {
             if (def.id == id) {
