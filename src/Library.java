@@ -43,7 +43,27 @@ public class Library extends Speaker {
         return libs;
     }
 
-    public void getBook(Reader reader, BookInstance instance) {
-        say("Giving book " + instance.isInstanceOf().title + " to " + reader.pickName());
+    synchronized public void getBook(Reader reader, BookInstance instance) {
+        say("Giving book " + instance.isInstanceOf().getTitle() + " to " + reader.pickName());
+        reader.giveBook(instance);
+        setBookActive(instance, false);
+    }
+
+    synchronized public void setBookActive(BookInstance book, boolean val){
+        book.setAvalible(val);
+    }
+
+    public void showBooks() {
+        sayBegin("my books: ");
+            for (BookInstance i: books) {
+                sayMid("" + i.isInstanceOf().toString() + " (" + i.isAvailableStr() + ")");
+            }
+        sayEnd();
+    }
+
+    public static void showAllBooksFromAllLibs(ArrayList<Library> libs) {
+        for (Library l: libs) {
+            l.showBooks();
+        }
     }
 }

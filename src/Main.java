@@ -11,6 +11,9 @@ public class Main {
         // Create libraries with books.
         ArrayList<Library> libs = Library.createLibsFromFile("data/libs.txt", base);
 
+        // Show books.
+        Library.showAllBooksFromAllLibs(libs);
+
         // Create readers from file.
         ArrayList<Reader> readers = Reader.createReadersFromFile("data/readersqueue.txt", libs, base);
 
@@ -21,3 +24,24 @@ public class Main {
         Reader.startAllReaders(readers);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

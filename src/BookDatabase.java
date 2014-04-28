@@ -13,7 +13,7 @@ public class BookDatabase extends Speaker {
         ArrayList<String> str;
         while ((str = FileData.readLine()) != null) {
             //System.out.println(str);
-            this.addDefinition(new BookDefinition(Integer.parseInt(str.get(0)), str.get(1), str.get(2)));
+            this.addDefinition(new BookDefinition(Integer.parseInt(str.get(0)), str.get(1), str.get(2), Integer.parseInt(str.get(3))));
         }
         FileData.endReading();
     }

@@ -4,6 +4,8 @@ public class Reader extends Speaker {
     private ArrayList<Action> actionStack;
     private ArrayList<Library> libList;
     private BookDatabase data;
+    private BookInstance myBook;
+    private int atPage;
 
     // Constructor. Give name.
     public Reader(String name) {
@@ -59,6 +61,20 @@ public class Reader extends Speaker {
                         getOwner().actionFindBook(_bookid);
                     }
                 });
+
+                reader.addAction(new Action("readwhatyouhave") {
+                    @Override
+                    public void action() {
+                        getOwner().actionReadBook();
+                    }
+                });
+
+                reader.addAction(new Action("returnwhatyouhave") {
+                    @Override
+                    public void action() {
+                        getOwner().returnBook();
+                    }
+                });
             }
 
             readers.add(reader);
@@ -98,7 +114,7 @@ public class Reader extends Speaker {
 
         int libToCheck = 0;
         Library lib;
-        BookInstance libFounded = null;
+        BookInstance _book = null;
         int safety = 0;
         int safetyMax = 8;
         boolean safetyPass = false;
@@ -110,10 +126,10 @@ public class Reader extends Speaker {
             // Code!
             sleepRandTime(100);
 
-            libFounded = askLibForBook(lib, bookid);
-            if (libFounded != null) {
+            _book = askLibForBook(lib, bookid);
+            if (_book != null) {
                 say("Book founded! Lib: " + lib.pickName());
-                //lib.getBook(this, bookid);
+                lib.getBook(this, _book);
                 break;
             } else {
                 say("Failed.");
@@ -135,10 +151,38 @@ public class Reader extends Speaker {
         }
     }
 
+    public void giveBook(BookInstance book) {
+        myBook = book;
+        say("Got book " + book.isInstanceOf().getTitle());
+    }
+
+    public void actionReadBook() {
+        atPage = 0;
+        say("Reading book " + myBook.isInstanceOf().getTitle() + "...");
+
+        while (atPage < myBook.isInstanceOf().getLength()) {
+            say("Reading at page " + atPage);
+            sleepRandTime(100);
+            atPage += 10;
+        }
+
+        say("Finish! (reading)");
+    }
+
+    public void returnBook() {
+        say("Returning book " + myBook.isInstanceOf().getTitle() + "...");
+
+        say("Return done.");
+    }
+
     public BookInstance askLibForBook(Library lib, int bookid) {
         for (BookInstance i: lib.books) {
             if (i.isInstanceOf().id == bookid) {
-                return i;
+                if (i.isAvailable()) {
+                    return i;
+                } else {
+                    say("Book is not avalible :(");
+                }
             }
         }
         return null;

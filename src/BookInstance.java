@@ -16,6 +16,10 @@ public class BookInstance {
         return state;
     }
 
+    public void setAvalible(boolean av) {
+        this.state = av;
+    }
+
     public String isAvailableStr() {
         if (isAvailable()) {
             return "available";
