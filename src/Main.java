@@ -21,28 +21,3 @@ public class Main {
         Reader.startAllReaders(readers);
     }
 }
-
-
-
-
-
-
-
-
-
-
-/*
-        final Reader a = new Reader("Tom");
-        a.addAction(new Action("say hello") {
-            public void action() {
-                a.say("Hello!");
-            }
-        });
-        a.addAction(new Action("read") {
-            public void action() {
-                a.read();
-            }
-        });
-        a.showActionStack();
-        a.start();
-*/

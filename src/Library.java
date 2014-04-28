@@ -42,4 +42,8 @@ public class Library extends Speaker {
         // Return list of libraries.
         return libs;
     }
+
+    public void getBook(Reader reader, BookInstance instance) {
+        say("Giving book " + instance.isInstanceOf().title + " to " + reader.pickName());
+    }
 }

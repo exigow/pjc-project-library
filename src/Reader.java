@@ -97,21 +97,26 @@ public class Reader extends Speaker {
         say("Im going to find book " + data.getBookDefinitionById(bookid) + "...");
 
         int libToCheck = 0;
-        boolean libFounded = false;
+        Library lib;
+        BookInstance libFounded = null;
         int safety = 0;
         int safetyMax = 8;
         boolean safetyPass = false;
         while (safety < safetyMax) {
             safety++;
-            say("Checking lib (" + safety + ")" + libList.get(libToCheck).pickName());
+            lib = libList.get(libToCheck);
+            say("Checking lib (" + safety + ")" + lib.pickName());
 
             // Code!
             sleepRandTime(100);
 
-            libFounded = askLibForBook(libList.get(libToCheck), bookid);
-            if (libFounded) {
-                say("Book founded!");
+            libFounded = askLibForBook(lib, bookid);
+            if (libFounded != null) {
+                say("Book founded! Lib: " + lib.pickName());
+                //lib.getBook(this, bookid);
                 break;
+            } else {
+                say("Failed.");
             }
 
             libToCheck++;
@@ -130,12 +135,12 @@ public class Reader extends Speaker {
         }
     }
 
-    public boolean askLibForBook(Library lib, int bookid) {
+    public BookInstance askLibForBook(Library lib, int bookid) {
         for (BookInstance i: lib.books) {
             if (i.isInstanceOf().id == bookid) {
-                return true;
+                return i;
             }
         }
-        return false;
+        return null;
     }
 }
