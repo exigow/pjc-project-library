@@ -23,7 +23,7 @@ public class BookDatabase extends Speaker {
     }
 
     public void showAllDefinitions() {
-        sayBegin("showing definitions:");
+        sayBegin("Showing definitions:");
         for (BookDefinition def: definitions) {
             sayMid("" + def.toString());
         }

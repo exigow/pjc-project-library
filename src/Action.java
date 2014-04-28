@@ -1,5 +1,6 @@
 public class Action extends Thread {
     private String name;
+    private Reader owner;
 
     public Action(String actionName) {
         this.name = actionName;
@@ -16,5 +17,13 @@ public class Action extends Thread {
 
     public String pickName() {
         return "<" + name + ">";
+    }
+
+    public void setOwner(Reader owner) {
+        this.owner = owner;
+    }
+
+    public Reader getOwner() {
+        return owner;
     }
 }

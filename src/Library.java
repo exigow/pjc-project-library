@@ -6,13 +6,13 @@ public class Library extends Speaker {
     public Library(String name) {
         giveName(name);
         books = new ArrayList<BookInstance>();
-        say("created!");
+        say("Created!");
     }
 
     // Add instance of book (from definition).
     public void addBookInstance(BookDefinition definition) {
         //System.out.println("Adding book instance of " + definition.toString() + " to " + this.name);
-        sayMid("book instance added " + definition.toString());
+        sayMid("Book instance added " + definition.toString());
         this.books.add(new BookInstance(definition));
     }
 
@@ -25,7 +25,7 @@ public class Library extends Speaker {
             Library lib = new Library(
                     /* name */ str.get(0));
 
-            lib.sayBegin("receiving books:");
+            lib.sayBegin("Receiving books:");
 
             // Add books.
             for (int i = 1; i < str.size(); i++) {

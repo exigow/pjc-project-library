@@ -12,7 +12,13 @@ public class Main {
         ArrayList<Library> libs = Library.createLibsFromFile("data/libs.txt", base);
 
         // Create readers from file.
-        ArrayList<Reader> readers = Reader.createReadersFromFile("data/readersqueue.txt");
+        ArrayList<Reader> readers = Reader.createReadersFromFile("data/readersqueue.txt", libs, base);
+
+        // Show action stacks.
+        Reader.showStacks(readers);
+
+        // Run them!
+        Reader.startAllReaders(readers);
     }
 }
 
