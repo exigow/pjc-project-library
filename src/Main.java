@@ -4,13 +4,14 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Test start.");
 
+        // Create time.
         Time time = new Time() {
             @Override
             public void summary() {
                 System.err.println("### TIME EXPIRED ###");
             }
         };
-        Time.setSingletonTime(time);
+        Time.setSingletonTime(time); // <- set as singleton.
         time.start();
 
         // Load database.

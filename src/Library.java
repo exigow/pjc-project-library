@@ -82,9 +82,10 @@ public class Library extends Speaker {
             say("#ANGRY# Time expired! (" + diff + " time units)");
             say("You have to pay " + diff +  " units (1 unit = 1 coin)!");
             coins += diff;
+            reader.ivepaid += diff;
         }
 
-        say("#HAPPY# Thank you " + reader.pickName() + ". Now i have " + coins + " coins.");
+        say("#HAPPY# Thank you " + reader.pickName() + ". After that i have " + coins + " coins.");
     }
 
     synchronized public void setBookActive(BookInstance book, boolean val){

@@ -11,20 +11,14 @@ public class Reader extends Speaker {
     private int atPage;
     private Library myBookFrom;
     public int haveTimeMax, haveTimeStart;
-
-    ActionListener taskPerformer = new ActionListener() {
-        int iter = 0;
-        public void actionPerformed(ActionEvent evt) {
-            System.out.println("Tick " + iter);
-            iter++;
-        }
-    };
+    public int ivepaid;
 
     // Constructor. Give name.
     public Reader(String name) {
         this.giveName(name);
         this.actionStack = new ArrayList<Action>();
         say("Created!");
+        ivepaid = 0;
     }
 
     // Add action on stack.
@@ -53,7 +47,8 @@ public class Reader extends Speaker {
             say("Executing action " + a.pickName());
             a.run();
         }
-        say("I've done all my jobs from action stack (thread end).");
+        say("#HAPPY# I've done all my jobs from action stack (thread end).");
+        say("After all, i've paid " + ivepaid + ".");
     }
 
     // Create readers from file (give name, build action stack, etc.).
